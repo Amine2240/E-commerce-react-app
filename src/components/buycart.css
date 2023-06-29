@@ -1,0 +1,32 @@
+.cart {
+  right: 0;
+  height: 150vh;
+  width: 36vw;
+  animation: slideleft .25s linear;
+  box-shadow: -5px 0px 50px rgb(102, 102, 102);
+  background-color: rgb(252, 252, 252);
+  transition: all ease .5s;
+
+
+}
+
+@keyframes slideleft {
+
+  0%{
+    transform: translateX(40vw);
+    
+  }
+  
+  
+}
+.produit{
+  width: 95%;
+  margin: 0 auto;
+  
+}
+.delete{
+  font-size: 25px;
+   
+   margin-right: 8px;
+   
+}

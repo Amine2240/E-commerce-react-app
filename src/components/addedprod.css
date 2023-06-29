@@ -1,0 +1,46 @@
+.add {
+  top: 50px;
+  display: none;
+  opacity: 0;
+  cursor: text;
+  animation: showhide 1.5s linear;
+  position: absolute;
+  left: 50%;
+}
+
+.add p {
+  font-size: 14px;
+}
+
+@keyframes showhide {
+  0% {
+    display: none;
+    opacity: 1;
+    transform: scale(.2);
+  }
+
+  50% {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  70% {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  80% {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  100% {
+    display: none;
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+}
