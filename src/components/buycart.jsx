@@ -26,7 +26,7 @@ export default function Buycart({ fonction, producttable }) {
   const getTotalPrice = () => {
     //efficient way to get the sum of prices // credit to chatGPT//
     const totalPrice = producttabletmp.reduce((count, product) => {
-      return count + product.price *num;
+      return count + product.price * num;
     }, 0);
     return totalPrice;
   };
@@ -45,67 +45,67 @@ export default function Buycart({ fonction, producttable }) {
           <p className=" text-lg">Your Cart</p>
           <p className=" text-red-500"> ({producttabletmp.length} items)</p>
         </div>
-
-        {
-          // eslint-disable-next-line react/prop-types
-          producttabletmp.map((product) => {
-            return (
-              <>
-                <div className=" relative ">
-                  {" "}
-                  {product.component}
-                  <div className=" flex absolute bottom-1 left-36 top-24">
-                  <div className=" flex place-content-between w-96">
-                    <div className=" flex border-gray-300 w-32 h-10 place-content-between ml-6 border-2 mb-4">
-                      <button
-                        className=" border-r-2 border-gray-300 w-1/3 text-2xl text-center "
+        <div className=" overflow-y-scroll style">
+          {
+            // eslint-disable-next-line react/prop-types
+            producttabletmp.map((product) => {
+              return (
+                <>
+                  <div className=" relative mb-10 ">
+                    {" "}
+                    {product.component}
+                    <div className=" flex absolute bottom-1 left-36 top-24">
+                      <div className=" flex place-content-between w-96">
+                        <div className=" flex border-gray-300 w-32 h-10 place-content-between ml-6 border-2 mb-4">
+                          <button
+                            className=" border-r-2 border-gray-300 w-1/3 text-2xl text-center "
+                            onClick={() => {
+                              setnum((prev) => prev - 1);
+                            }}
+                          >
+                            {" "}
+                            -{" "}
+                          </button>
+                          <p className="  border-gray-300 w-1/3 text-center text-xl">
+                            {" "}
+                            {num > 0 ? num : "1"}{" "}
+                          </p>
+                          <button
+                            className=" border-l-2 border-gray-300 w-1/3 text-2xl text-center "
+                            onClick={() => {
+                              setnum((prev) => prev + 1);
+                            }}
+                          >
+                            {" "}
+                            +{" "}
+                          </button>
+                        </div>
+                      </div>
+                      <FontAwesomeIcon
+                        icon={faCircleXmark}
+                        className=" text-red-500 delete cursor-pointer"
                         onClick={() => {
-                          setnum((prev) => prev - 1);
+                          deleteelement(product.id);
                         }}
-                      >
-                        {" "}
-                        -{" "}
-                      </button>
-                      <p className="  border-gray-300 w-1/3 text-center text-xl">
-                        {" "}
-                        {num > 0 ? num : "1"}{" "}
-                      </p>
-                      <button
-                        className=" border-l-2 border-gray-300 w-1/3 text-2xl text-center "
-                        onClick={() => {
-                          setnum((prev) => prev + 1);
-                        }}
-                      >
-                        {" "}
-                        +{" "}
-                      </button>
+                      />
                     </div>
                   </div>
-                  <FontAwesomeIcon
-                    icon={faCircleXmark}
-                    className=" text-red-500 delete cursor-pointer"
-                    onClick={() => {
-                      deleteelement(product.id);
-                    }}
-                  />
-                  </div>
-                </div>
-              </>
-            );
-          })
-        }
-
-        <div className=" flex flex-col items-center h-20 place-content-around ">
-          <div className=" flex place-content-between w-full px-10">
+                </>
+              );
+            })
+          }
+        </div>
+        <div className="  flex flex-col items-center h-20 place-content-end pb-3 ">
+          <div className=" flex place-content-between w-full px-10 ">
             <p className=" font-bold capitalize text-xl">subtotal : </p>
             <p className=" font-bold capitalize text-2xl">
-              $ {getTotalPrice() <0 ? '0' : getTotalPrice()}
+              $ {getTotalPrice() < 0 ? "0" : getTotalPrice()}
             </p>
           </div>
-          <Link to='/success'>
-          <button className=" text-white bg-red-500 rounded-xl w-96  p-3 mt-5 capitalize">
-            pay with stripe
-          </button>
+          <Link to="/success">
+            <button className=" text-white bg-red-500 rounded-xl w-96  p-3 mt-5 capitalize">
+              pay with stripe
+            </button>
           </Link>
         </div>
       </div>
